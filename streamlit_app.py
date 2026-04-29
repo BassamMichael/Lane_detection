@@ -123,6 +123,15 @@ def main():
                     
             except Exception as e:
                 st.error(f"Error during inference: {e}")
+##############
+import torch
+from ultralytics.nn.tasks import SegmentationModel
 
+# This tells PyTorch 2.6+ to trust the Ultralytics segmentation classes
+torch.serialization.add_safe_globals([SegmentationModel])
+
+import streamlit as st
+from ultralytics import YOLO
+################
 if __name__ == "__main__":
     main()
