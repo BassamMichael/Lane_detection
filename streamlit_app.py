@@ -5,6 +5,13 @@ import pandas as pd
 from PIL import Image
 import streamlit as st
 
+# --- بداية التعديلات لحل مشكلة التحميل ---
+import torch
+from ultralytics.nn.tasks import SegmentationModel as YOLO_Segmentation
+# السماح لـ PyTorch بفك تشفير فئة YOLO بأمان
+torch.serialization.add_safe_globals([YOLO_Segmentation])
+# --- نهاية التعديلات ---
+
 from utils.detector import SegmentationModel
 from utils.visualization import draw_segmentation
 
